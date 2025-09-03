@@ -31,13 +31,12 @@ export class MailController {
     try {
 
       const mailDto = {
-        to: body.to,
-        subject: body.subject,
-        text: body.text,
-        attachments: file
-          ? [{ filename: file.originalname, path: `./uploads/${file.filename}` }]
-          : [],
-      };
+  to: body.to,
+  subject: body.subject,
+  attachments: file ? [{ filename: file.originalname, path: `./uploads/${file.filename}` }] : [],
+  template: body.template,  // pass template name from Postman
+  context: body.context ? JSON.parse(body.context) : {}, // pass JSON string for template variables
+};
 
       if (!mailDto.to || !mailDto.subject) {
         throw new BadRequestException('to and subject are required fields');

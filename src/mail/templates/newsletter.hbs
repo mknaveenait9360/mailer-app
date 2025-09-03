@@ -1,0 +1,8 @@
+<h1>Hello {{name}},</h1>
+<p>Here is our latest newsletter:</p>
+<ul>
+  {{#each articles}}
+    <li><b>{{this.title}}</b> - {{this.summary}}</li>
+  {{/each}}
+</ul>
+<p>Stay tuned for more updates!</p>
